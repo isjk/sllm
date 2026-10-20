@@ -1,0 +1,477 @@
+pageType: content
+background:
+  type: solid
+  color: "$bg"
+elements:
+  # ===== 头部 =====
+  - elementId: title
+    elementType: text
+    bounds: [64, 30, 800, 46]
+    content:
+      fontFamily: 得意黑
+      fontSize: 34
+      color: "$t1"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p>图 2 · 请求生命周期</p>
+  - elementId: subtitle
+    elementType: text
+    bounds: [64, 80, 1000, 22]
+    content:
+      fontSize: 14
+      color: "$t2"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p>从 prompt 到回池：§6.5 六步 · FETCH / COMPUTE 分叉 · 决策黑匣子闭环校准</p>
+  - elementId: badge-box
+    elementType: shape
+    bounds: [1096, 36, 120, 30]
+    shapeName: roundRect
+    adjustments: [50000]
+    fill: {type: solid, color: "#0A1930"}
+    border: {style: solid, width: 1, color: "$amber"}
+  - elementId: badge-text
+    elementType: text
+    bounds: [1096, 36, 120, 30]
+    content:
+      fontSize: 12
+      color: "$amber"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>v0.6 架构基线</p>
+
+  # ===== 泳道底 =====
+  - elementId: lane1
+    elementType: shape
+    bounds: [64, 130, 1152, 240]
+    shapeName: rect
+    fill: {type: solid, color: "#0E2140"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: lane1-label
+    elementType: text
+    bounds: [80, 138, 400, 16]
+    content:
+      fontSize: 11
+      color: "$cyan"
+      wrap: false
+      text: |
+        <p><strong>调度层</strong> · L1 分档 / L2 成本函数 / Tracker / 观测</p>
+  - elementId: lane2
+    elementType: shape
+    bounds: [64, 382, 1152, 128]
+    shapeName: rect
+    fill: {type: solid, color: "#0D2033"}
+    border: {style: solid, width: 1, color: "#2C7DA8"}
+  - elementId: lane2-label
+    elementType: text
+    bounds: [80, 388, 400, 16]
+    content:
+      fontSize: 11
+      color: "$cyan2"
+      wrap: false
+      text: |
+        <p><strong>传输层</strong> · QUIC 双连接分治</p>
+  - elementId: lane3
+    elementType: shape
+    bounds: [64, 522, 1152, 120]
+    shapeName: rect
+    fill: {type: solid, color: "#121E30"}
+    border: {style: solid, width: 1, color: "#4A5B75"}
+  - elementId: lane3-label
+    elementType: text
+    bounds: [80, 528, 500, 16]
+    content:
+      fontSize: 11
+      color: "$gray"
+      wrap: false
+      text: |
+        <p><strong>引擎与节点</strong> · llama.cpp 适配（P0）· KV 池</p>
+
+  # ===== 调度层步骤 =====
+  - elementId: s1
+    elementType: shape
+    bounds: [110, 190, 170, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: s1t
+    elementType: text
+    bounds: [110, 190, 170, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>到达 · L1 分档</strong></p>
+        <p><span style="font-size:10px; color:$t3">交互/批处理（MVP 直通）</span></p>
+  - elementId: s2
+    elementType: shape
+    bounds: [330, 190, 190, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: s2t
+    elementType: text
+    bounds: [330, 190, 190, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>前缀分块 · 逐块算键</strong></p>
+        <p><span style="font-size:10px; color:$t2">H(前缀‖模型‖引擎族‖量化)</span></p>
+  - elementId: s3
+    elementType: shape
+    bounds: [570, 190, 200, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: s3t
+    elementType: text
+    bounds: [570, 190, 200, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>Tracker 目录查询</strong></p>
+        <p><span style="font-size:10px; color:$t2">最长命中前缀 k + 副本列表</span></p>
+        <p><span style="font-size:10px; color:$t3">（含五维画像）</span></p>
+  - elementId: s4
+    elementType: shape
+    bounds: [830, 176, 150, 100]
+    shapeName: diamond
+    fill: {type: solid, color: "#2A2410"}
+    border: {style: solid, width: 2, color: "$amber"}
+  - elementId: s4t
+    elementType: text
+    bounds: [842, 200, 126, 54]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.35
+      text: |
+        <p><span style="color:$amber"><strong>L2 取 or 算</strong></span></p>
+        <p><span style="font-size:9px; color:$t2">T_fetch &lt; T_compute ×MARGIN</span></p>
+  - elementId: journal
+    elementType: shape
+    bounds: [1030, 186, 170, 80]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#0C1A33"}
+    border: {style: dash, width: 1, color: "$amber"}
+  - elementId: journalt
+    elementType: text
+    bounds: [1030, 186, 170, 80]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="color:$amber"><strong>决策黑匣子</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">输入快照 + 决策</span></p>
+        <p><span style="font-size:10px; color:$t2">+ 预测 ETA</span></p>
+
+  # 步骤编号徽章
+  - elementId: n1-badge
+    elementType: shape
+    bounds: [102, 182, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$cyan"}
+  - elementId: n1-badge-t
+    elementType: text
+    bounds: [102, 182, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "1"}
+  - elementId: n2-badge
+    elementType: shape
+    bounds: [322, 182, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$cyan"}
+  - elementId: n2-badge-t
+    elementType: text
+    bounds: [322, 182, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "2"}
+  - elementId: n3-badge
+    elementType: shape
+    bounds: [562, 182, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$cyan"}
+  - elementId: n3-badge-t
+    elementType: text
+    bounds: [562, 182, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "3"}
+  - elementId: n4-badge
+    elementType: shape
+    bounds: [826, 170, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$amber"}
+  - elementId: n4-badge-t
+    elementType: text
+    bounds: [826, 170, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "4"}
+
+  # 调度层内箭头
+  - elementId: e12
+    elementType: line
+    bounds: [280, 224, 50, 4]
+    viewBox: [50, 4]
+    points: "0,2 50,2"
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: e23
+    elementType: line
+    bounds: [520, 224, 50, 4]
+    viewBox: [50, 4]
+    points: "0,2 50,2"
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: e34
+    elementType: line
+    bounds: [770, 224, 60, 4]
+    viewBox: [60, 4]
+    points: "0,2 60,2"
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: e4j
+    elementType: line
+    bounds: [980, 224, 50, 4]
+    viewBox: [50, 4]
+    points: "0,2 50,2"
+    arrow: [null, "arrow"]
+    border: {style: dash, width: 2, color: "$amber"}
+  - elementId: e4j-label
+    elementType: text
+    bounds: [986, 206, 40, 14]
+    content: {fontSize: 9, color: "$amber", wrap: false, text: "记录"}
+
+  # ===== 分叉箭头 =====
+  - elementId: fork-a
+    elementType: line
+    bounds: [415, 250, 460, 165]
+    viewBox: [460, 165]
+    points: "460,0 300,40 120,120 0,165"
+    curve: smooth
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan2"}
+  - elementId: fork-a-label
+    elementType: text
+    bounds: [470, 320, 170, 14]
+    content: {fontSize: 10, color: "$cyan2", wrap: false, text: "命中 k 块 · 同族副本"}
+  - elementId: fork-b
+    elementType: line
+    bounds: [950, 268, 120, 290]
+    viewBox: [120, 290]
+    points: "0,0 80,60 110,200 120,290"
+    curve: smooth
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$gray"}
+  - elementId: fork-b-label
+    elementType: text
+    bounds: [990, 330, 170, 14]
+    content: {fontSize: 10, color: "$gray", wrap: false, text: "未命中 / 跨族（D1）"}
+
+  # ===== 传输层步骤 =====
+  - elementId: s5a
+    elementType: shape
+    bounds: [300, 415, 230, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 2, color: "$cyan2"}
+  - elementId: s5at
+    elementType: text
+    bounds: [300, 415, 230, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>FETCH · bulk 连接拉块</strong></p>
+        <p><span style="font-size:10px; color:$t2">CUBIC · 吞吐优先 · 点播心法</span></p>
+        <p><span style="font-size:10px; color:$t3">同族才取 · 防投毒采样校验</span></p>
+  - elementId: n5a-badge
+    elementType: shape
+    bounds: [292, 407, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$cyan2"}
+  - elementId: n5a-badge-t
+    elementType: text
+    bounds: [292, 407, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "5"}
+  - elementId: s6
+    elementType: shape
+    bounds: [640, 415, 260, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 2, color: "$cyan2"}
+  - elementId: s6t
+    elementType: text
+    bounds: [640, 415, 260, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>Decode 贴用户</strong></p>
+        <p><span style="font-size:10px; color:$t2">token 走 stream 连接 · BBRv3/Copa</span></p>
+        <p><span style="font-size:10px; color:$t3">时延优先 · 直播心法</span></p>
+  - elementId: n6-badge
+    elementType: shape
+    bounds: [632, 407, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$cyan2"}
+  - elementId: n6-badge-t
+    elementType: text
+    bounds: [632, 407, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "6"}
+  - elementId: e5a6
+    elementType: line
+    bounds: [530, 449, 110, 4]
+    viewBox: [110, 4]
+    points: "0,2 110,2"
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan2"}
+  - elementId: e5a6-label
+    elementType: text
+    bounds: [536, 431, 100, 14]
+    content: {fontSize: 9, color: "$cyan2", wrap: false, text: "KV 块就位"}
+
+  # ===== 引擎层步骤 =====
+  - elementId: s5b
+    elementType: shape
+    bounds: [950, 555, 240, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#111E33"}
+    border: {style: solid, width: 2, color: "$gray"}
+  - elementId: s5bt
+    elementType: text
+    bounds: [950, 555, 240, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="font-size:10px"><strong>COMPUTE · Prefill</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">本地 / 指派强卡节点</span></p>
+        <p><span style="font-size:10px; color:$t3">含排队 T_compute</span></p>
+  - elementId: n5b-badge
+    elementType: shape
+    bounds: [952, 547, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$gray"}
+  - elementId: n5b-badge-t
+    elementType: text
+    bounds: [952, 547, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "5"}
+  - elementId: s7
+    elementType: shape
+    bounds: [300, 555, 260, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#111E33"}
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: s7t
+    elementType: text
+    bounds: [300, 555, 260, 72]
+    content:
+      fontSize: 11
+      color: "$t1"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>KV 注册回池</strong></p>
+        <p><span style="font-size:10px; color:$t2">键 + 画像上报 Tracker</span></p>
+        <p><span style="font-size:10px; color:$t3">会话级回池 = 开放问题 §13.6</span></p>
+  - elementId: n7-badge
+    elementType: shape
+    bounds: [292, 547, 22, 22]
+    shapeName: ellipse
+    fill: {type: solid, color: "$cyan"}
+  - elementId: n7-badge-t
+    elementType: text
+    bounds: [292, 547, 22, 22]
+    content: {fontSize: 11, bold: true, color: "#0A1930", align: [center, middle], wrap: false, text: "7"}
+
+  # 引擎层箭头
+  - elementId: e5b6
+    elementType: line
+    bounds: [770, 487, 250, 68]
+    viewBox: [250, 68]
+    points: "250,68 160,30 60,8 0,0"
+    curve: smooth
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan2"}
+  - elementId: e5b6-label
+    elementType: text
+    bounds: [830, 500, 160, 14]
+    content: {fontSize: 9, color: "$cyan2", wrap: false, text: "Prefill 完成 · 接力 Decode"}
+  - elementId: e5b7
+    elementType: line
+    bounds: [560, 589, 400, 4]
+    viewBox: [400, 4]
+    points: "400,2 0,2"
+    arrow: [null, "arrow"]
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: e5b7-label
+    elementType: text
+    bounds: [640, 571, 140, 14]
+    content: {fontSize: 9, color: "$cyan", wrap: false, text: "Prefill 产出 KV 注册"}
+  - elementId: e67
+    elementType: line
+    bounds: [430, 487, 270, 68]
+    viewBox: [270, 68]
+    points: "270,0 180,30 80,55 0,68"
+    curve: smooth
+    arrow: [null, "arrow"]
+    border: {style: dash, width: 1, color: "$gray"}
+  - elementId: e67-label
+    elementType: text
+    bounds: [480, 500, 170, 14]
+    content: {fontSize: 9, color: "$gray", wrap: false, text: "Decode 增量会话 KV（待实测）"}
+
+  # ===== 黑匣子回填闭环 =====
+  - elementId: loop
+    elementType: line
+    bounds: [430, 266, 685, 406]
+    viewBox: [685, 406]
+    points: "0,361 0,406 685,406 685,0"
+    curve: sharp
+    arrow: [null, "arrow"]
+    border: {style: dash, width: 2, color: "$amber"}
+  - elementId: loop-label
+    elementType: text
+    bounds: [640, 654, 460, 14]
+    content:
+      fontSize: 10
+      color: "$amber"
+      wrap: false
+      text: |
+        <p>实测耗时回填 · 回放「预测 vs 实际」→ 校准盈亏函数（调度器的进化闭环）</p>
+
+  # ===== 页脚 =====
+  - elementId: footer
+    elementType: text
+    bounds: [64, 690, 1152, 20]
+    content:
+      fontSize: 10
+      color: "$t3"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>决策即数据：每一次「取 or 算」的输入、决策与事后校验都可回放 · Swarm LLM 设计文档 v0.6</p>

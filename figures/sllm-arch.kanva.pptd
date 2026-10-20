@@ -1,0 +1,24 @@
+version: v2
+title: Swarm LLM 总体架构图
+size: [1280, 720]
+customFonts:
+  - family: 得意黑
+    src: "https://statics.kimi.ai/neo-design-static/p-font/%E5%BE%97%E6%84%8F%E9%BB%91.ttf"
+theme:
+  colors:
+    bg: "#0A1930"
+    band1: "#122A4E"
+    band2: "#10263F"
+    band3: "#16233B"
+    chip: "#0C2140"
+    cyan: "#5CA8FF"
+    cyan2: "#38BDF8"
+    gray: "#94A3B8"
+    amber: "#F5B14C"
+    t1: "#FFFFFF"
+    t2: "#9DB8DD"
+    t3: "#5E7BA3"
+pages:
+  - pages/1_arch.page
+  - pages/2_lifecycle.page
+  - pages/3_dualconn.page

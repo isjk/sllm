@@ -1,0 +1,600 @@
+pageType: content
+background:
+  type: solid
+  color: $bg
+elements:
+  - elementId: title
+    elementType: text
+    bounds: [64, 30, 760, 46]
+    content:
+      fontFamily: 得意黑
+      fontSize: 34
+      color: $t1
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p>Swarm LLM · 总体架构</p>
+  - elementId: subtitle
+    elementType: text
+    bounds: [64, 80, 980, 22]
+    content:
+      fontSize: 14
+      color: $t2
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p>异构集群的 KV 调度操作系统——引擎是别人的（vLLM / llama.cpp），KV 的存、取、传、算，决策权是我们的</p>
+  - elementId: badge-box
+    elementType: shape
+    bounds: [1096, 36, 120, 30]
+    shapeName: roundRect
+    adjustments: [50000]
+    fill: {type: solid, color: "#0A1930"}
+    border: {style: solid, width: 1, color: $amber}
+  - elementId: badge-text
+    elementType: text
+    bounds: [1096, 36, 120, 30]
+    content:
+      fontSize: 12
+      color: $amber
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>v0.6 架构基线</p>
+  - elementId: b1-bar
+    elementType: shape
+    bounds: [64, 140, 6, 130]
+    shapeName: rect
+    fill: {type: solid, color: $cyan}
+  - elementId: b1-band
+    elementType: shape
+    bounds: [70, 140, 874, 130]
+    shapeName: rect
+    fill: {type: solid, color: $band1}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: b1-title
+    elementType: text
+    bounds: [90, 148, 830, 24]
+    content:
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p><span style="font-size:16px; color:$t1; font-family:得意黑">调度层 · 灵魂</span><span style="font-size:12px; color:$cyan">　　取 or 算 · 副本 · 作息编排 —— 调度决策 = 角色指派 × 引擎路由</span></p>
+  - elementId: b1-c1
+    elementType: shape
+    bounds: [90, 182, 140, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: b1-c1t
+    elementType: text
+    bounds: [90, 182, 140, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>L1 请求调度</strong></p>
+        <p><span style="font-size:10px; color:$t2">SLO 分档</span></p>
+        <p><span style="font-size:10px; color:$t3">（MVP 直通）</span></p>
+  - elementId: b1-c2
+    elementType: shape
+    bounds: [240, 182, 230, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#2A2410"}
+    border: {style: solid, width: 2, color: $amber}
+  - elementId: b1-c2t
+    elementType: text
+    bounds: [240, 182, 230, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="color:$amber"><strong>★ L2 KV 调度 · 系统心脏</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">取 or 算 · 副本放置 · 淘汰</span></p>
+        <p><span style="font-size:10px; color:$t3">成本函数：T_取 vs T_算</span></p>
+  - elementId: b1-c3
+    elementType: shape
+    bounds: [480, 182, 160, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: b1-c3t
+    elementType: text
+    bounds: [480, 182, 160, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>L3 编排</strong></p>
+        <p><span style="font-size:10px; color:$t2">作息对齐 pipeline 分组</span></p>
+        <p><span style="font-size:10px; color:$t3">（MVP 手工配置）</span></p>
+  - elementId: b1-c4
+    elementType: shape
+    bounds: [650, 182, 130, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: b1-c4t
+    elementType: text
+    bounds: [650, 182, 130, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>Tracker</strong></p>
+        <p><span style="font-size:10px; color:$t2">内容寻址目录</span></p>
+        <p><span style="font-size:10px; color:$t3">最长前缀命中</span></p>
+  - elementId: b1-c5
+    elementType: shape
+    bounds: [790, 182, 134, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: b1-c5t
+    elementType: text
+    bounds: [790, 182, 134, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>观测层</strong></p>
+        <p><span style="font-size:10px; color:$t2">/metrics 出口</span></p>
+        <p><span style="font-size:10px; color:$t3">决策黑匣子回填</span></p>
+  - elementId: a1-down
+    elementType: line
+    bounds: [300, 272, 4, 16]
+    viewBox: [4, 16]
+    points: 2,0 2,16
+    arrow: [null, arrow]
+    border: {style: solid, width: 2, color: $cyan}
+  - elementId: a1-up
+    elementType: line
+    bounds: [700, 272, 4, 16]
+    viewBox: [4, 16]
+    points: 2,16 2,0
+    arrow: [null, arrow]
+    border: {style: solid, width: 2, color: $cyan2}
+  - elementId: a1-down-label
+    elementType: text
+    bounds: [312, 272, 70, 14]
+    content:
+      fontSize: 10
+      color: $cyan
+      wrap: false
+      text: |
+        <p>调度指令</p>
+  - elementId: a1-up-label
+    elementType: text
+    bounds: [614, 272, 84, 14]
+    content:
+      fontSize: 10
+      color: $cyan2
+      wrap: false
+      align: [right, top]
+      text: |
+        <p>链路遥测 RTT·cwnd</p>
+  - elementId: b2-bar
+    elementType: shape
+    bounds: [64, 290, 6, 130]
+    shapeName: rect
+    fill: {type: solid, color: $cyan2}
+  - elementId: b2-band
+    elementType: shape
+    bounds: [70, 290, 874, 130]
+    shapeName: rect
+    fill: {type: solid, color: $band2}
+    border: {style: solid, width: 1, color: "#2C7DA8"}
+  - elementId: b2-title
+    elementType: text
+    bounds: [90, 298, 830, 24]
+    content:
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p><span style="font-size:16px; color:$t1; font-family:得意黑">传输层 · 肌肉</span><span style="font-size:12px; color:$cyan2">　　两类流量物理隔离为两条独立 QUIC 连接（拥塞窗口 per-connection）</span></p>
+  - elementId: b2-c1
+    elementType: shape
+    bounds: [90, 332, 270, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 2, color: $cyan2}
+  - elementId: b2-c1t
+    elementType: text
+    bounds: [90, 332, 270, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>QUIC 双连接（TQUIC）</strong></p>
+        <p><span style="font-size:10px; color:$t2">bulk · CUBIC 吞吐优先 ｜ stream · BBRv3/Copa 时延优先</span></p>
+        <p><span style="font-size:10px; color:$t3">Jumbo Frame · ACK 频率分治</span></p>
+  - elementId: b2-c2
+    elementType: shape
+    bounds: [370, 332, 165, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#2A2410"}
+    border: {style: solid, width: 1, color: $amber}
+  - elementId: b2-c2t
+    elementType: text
+    bounds: [370, 332, 165, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |-
+        <p><strong><span style="color: rgb(245, 177, 76);">MyCC 成本钩子</span></strong></p><p><span style="font-size: 10px;"><span style="color: rgb(157, 184, 221);">CC pacing 输出上</span></span></p><p><span style="font-size: 10px;"><span style="color: rgb(157, 184, 221);">叠加 cost-aware 限速</span></span></p>
+  - elementId: b2-c3
+    elementType: shape
+    bounds: [545, 332, 105, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2C7DA8"}
+  - elementId: b2-c3t
+    elementType: text
+    bounds: [545, 332, 105, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>KV 压缩</strong></p>
+        <p><span style="font-size:10px; color:$t2">3~4×（P1）</span></p>
+        <p><span style="font-size:10px; color:$t3">CPU 换带宽</span></p>
+  - elementId: b2-c4
+    elementType: shape
+    bounds: [660, 332, 165, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2C7DA8"}
+  - elementId: b2-c4t
+    elementType: text
+    bounds: [660, 332, 165, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>churn 承接</strong></p>
+        <p><span style="font-size:10px; color:$t2">0-RTT 重连 · 连接迁移</span></p>
+        <p><span style="font-size:10px; color:$t3">写入禁用 0-RTT</span></p>
+  - elementId: b2-c5
+    elementType: shape
+    bounds: [835, 332, 105, 72]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2C7DA8"}
+  - elementId: b2-c5t
+    elementType: text
+    bounds: [835, 332, 105, 72]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>防投毒</strong></p>
+        <p><span style="font-size:10px; color:$t2">采样重算</span></p>
+        <p><span style="font-size:10px; color:$t3">AEAD 白拿完整性</span></p>
+  - elementId: a2-down
+    elementType: line
+    bounds: [300, 422, 4, 16]
+    viewBox: [4, 16]
+    points: 2,0 2,16
+    arrow: [null, arrow]
+    border: {style: solid, width: 2, color: $cyan}
+  - elementId: a2-up
+    elementType: line
+    bounds: [700, 422, 4, 16]
+    viewBox: [4, 16]
+    points: 2,16 2,0
+    arrow: [null, arrow]
+    border: {style: solid, width: 2, color: $cyan2}
+  - elementId: a2-down-label
+    elementType: text
+    bounds: [312, 422, 80, 14]
+    content:
+      fontSize: 10
+      color: $cyan
+      wrap: false
+      text: |
+        <p>KV 块读写</p>
+  - elementId: a2-up-label
+    elementType: text
+    bounds: [620, 422, 78, 14]
+    content:
+      fontSize: 10
+      color: $cyan2
+      wrap: false
+      align: [right, top]
+      text: |
+        <p>引擎状态回流</p>
+  - elementId: b3-bar
+    elementType: shape
+    bounds: [64, 444, 6, 106]
+    shapeName: rect
+    fill: {type: solid, color: $gray}
+  - elementId: b3-band
+    elementType: shape
+    bounds: [70, 444, 874, 106]
+    shapeName: rect
+    fill: {type: solid, color: $band3}
+    border: {style: dash, width: 1, color: "#4A5B75"}
+  - elementId: b3-title
+    elementType: text
+    bounds: [90, 452, 830, 24]
+    content:
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p><span style="font-size:16px; color:$t1; font-family:得意黑">适配层 · 薄、可换</span><span style="font-size:12px; color:$gray">　　引擎 API 演进只冲击这一层，冲击成本以天计</span></p>
+  - elementId: b3-c1
+    elementType: shape
+    bounds: [90, 484, 300, 54]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#111E33"}
+    border: {style: solid, width: 1, color: "#4A5B75"}
+  - elementId: b3-c1t
+    elementType: text
+    bounds: [90, 484, 300, 54]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>llama.cpp 适配（P0）</strong></p>
+        <p><span style="font-size:10px; color:$t2">老卡 / 弱卡 / Mac · 侧门 KV 序列化</span></p>
+  - elementId: b3-c2
+    elementType: shape
+    bounds: [400, 484, 280, 54]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#111E33"}
+    border: {style: solid, width: 1, color: "#4A5B75"}
+  - elementId: b3-c2t
+    elementType: text
+    bounds: [400, 484, 280, 54]
+    content:
+      fontSize: 11
+      color: $t1
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>vLLM KV Connector（P1）</strong></p>
+        <p><span style="font-size:10px; color:$t2">强卡 · 与 Mooncake 同接口叙事</span></p>
+  - elementId: b3-c3
+    elementType: shape
+    bounds: [690, 484, 250, 54]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: "#111E33"}
+    border: {style: dash, width: 1, color: "#4A5B75"}
+  - elementId: b3-c3t
+    elementType: text
+    bounds: [690, 484, 250, 54]
+    content:
+      fontSize: 11
+      color: $t2
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p>未来引擎 · 打补丁接入</p>
+        <p><span style="font-size:10px; color:$t3">D1：跨引擎族不解释 · 不转换 · 直接重算</span></p>
+  - elementId: r1-bar
+    elementType: shape
+    bounds: [984, 140, 4, 130]
+    shapeName: rect
+    fill: {type: solid, color: $amber}
+  - elementId: r1-card
+    elementType: shape
+    bounds: [988, 140, 228, 130]
+    shapeName: rect
+    fill: {type: solid, color: "#0E2342"}
+  - elementId: r1-text
+    elementType: text
+    bounds: [1004, 150, 198, 112]
+    content:
+      align: [left, top]
+      lineHeight: 1.5
+      text: |
+        <p><span style="font-size:13px; color:$amber"><strong>核心资产 · 永不外包</strong></span></p>
+        <p><span style="font-size:11px; color:$t2">盈亏函数、副本策略、决策黑匣子是项目的叙事内核——护城河的技术侧</span></p>
+  - elementId: r2-bar
+    elementType: shape
+    bounds: [984, 290, 4, 130]
+    shapeName: rect
+    fill: {type: solid, color: $cyan2}
+  - elementId: r2-card
+    elementType: shape
+    bounds: [988, 290, 228, 130]
+    shapeName: rect
+    fill: {type: solid, color: "#0E2342"}
+  - elementId: r2-text
+    elementType: text
+    bounds: [1004, 300, 198, 112]
+    content:
+      align: [left, top]
+      lineHeight: 1.5
+      text: |-
+        <p><span style="font-size: 13px;"><strong><span style="color: rgb(56, 189, 248);">设计永不外包</span></strong></span></p><p><span style="font-size: 11px;"><span style="color: rgb(157, 184, 221);">双连接分治、CC 选型、MyCC 钩子是我们的；协议栈实现（TQUIC）可选型替换</span></span></p>
+  - elementId: r3-bar
+    elementType: shape
+    bounds: [984, 444, 4, 106]
+    shapeName: rect
+    fill: {type: solid, color: $gray}
+  - elementId: r3-card
+    elementType: shape
+    bounds: [988, 444, 228, 106]
+    shapeName: rect
+    fill: {type: solid, color: "#0E2342"}
+  - elementId: r3-text
+    elementType: text
+    bounds: [1004, 454, 198, 88]
+    content:
+      align: [left, top]
+      lineHeight: 1.5
+      text: |
+        <p><span style="font-size:13px; color:$gray"><strong>唯一允许被冲击的层</strong></span></p>
+        <p><span style="font-size:11px; color:$t2">引擎升级只改薄适配层，绝不让外部演进打进调度层</span></p>
+  - elementId: a3-down
+    elementType: line
+    bounds: [300, 552, 4, 16]
+    viewBox: [4, 16]
+    points: 2,0 2,16
+    arrow: [null, arrow]
+    border: {style: solid, width: 2, color: $gray}
+  - elementId: a3-up
+    elementType: line
+    bounds: [700, 552, 4, 16]
+    viewBox: [4, 16]
+    points: 2,16 2,0
+    arrow: [null, arrow]
+    border: {style: solid, width: 2, color: $gray}
+  - elementId: a3-down-label
+    elementType: text
+    bounds: [312, 552, 130, 14]
+    content:
+      fontSize: 10
+      color: $gray
+      wrap: false
+      text: |
+        <p>模型执行 Prefill/Decode</p>
+  - elementId: a3-up-label
+    elementType: text
+    bounds: [600, 552, 98, 14]
+    content:
+      fontSize: 10
+      color: $gray
+      wrap: false
+      align: [right, top]
+      text: |
+        <p>KV 产出回池注册</p>
+  - elementId: nodes-label
+    elementType: text
+    bounds: [64, 578, 700, 18]
+    content:
+      fontSize: 11
+      color: $t3
+      wrap: false
+      text: |
+        <p>异构节点层 · 杂牌局域网（无 RDMA · churn 即作息 · 单 binary 免运维）</p>
+  - elementId: n1
+    elementType: shape
+    bounds: [90, 602, 200, 66]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: n1-icon
+    elementType: icon
+    bounds: [106, 616, 22, 22]
+    iconName: fas:server
+    fill: {type: solid, color: $cyan}
+  - elementId: n1-text
+    elementType: text
+    bounds: [138, 610, 144, 52]
+    content:
+      align: [left, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="font-size:12px; color:$t1"><strong>3090 工作站</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">强卡 · Prefill 主力</span></p>
+  - elementId: n2
+    elementType: shape
+    bounds: [302, 602, 200, 66]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: n2-icon
+    elementType: icon
+    bounds: [318, 616, 22, 22]
+    iconName: fas:microchip
+    fill: {type: solid, color: $cyan}
+  - elementId: n2-text
+    elementType: text
+    bounds: [350, 610, 144, 52]
+    content:
+      align: [left, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="font-size:12px; color:$t1"><strong>4G 老卡</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">draft / Prefill 准入</span></p>
+  - elementId: n3
+    elementType: shape
+    bounds: [514, 602, 200, 66]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: n3-icon
+    elementType: icon
+    bounds: [530, 616, 22, 22]
+    iconName: fas:memory
+    fill: {type: solid, color: $cyan}
+  - elementId: n3-text
+    elementType: text
+    bounds: [562, 610, 144, 52]
+    content:
+      align: [left, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="font-size:12px; color:$t1"><strong>无卡纯内存机</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">KV 池 · seeder 角色</span></p>
+  - elementId: n4
+    elementType: shape
+    bounds: [726, 602, 200, 66]
+    shapeName: roundRect
+    adjustments: [12000]
+    fill: {type: solid, color: $chip}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: n4-icon
+    elementType: icon
+    bounds: [742, 616, 22, 22]
+    iconName: fas:laptop
+    fill: {type: solid, color: $cyan}
+  - elementId: n4-text
+    elementType: text
+    bounds: [774, 610, 144, 52]
+    content:
+      align: [left, middle]
+      lineHeight: 1.4
+      text: |
+        <p><span style="font-size:12px; color:$t1"><strong>Mac mini</strong></span></p>
+        <p><span style="font-size:10px; color:$t2">轻量节点 · llama.cpp</span></p>
+  - elementId: footer
+    elementType: text
+    bounds: [64, 688, 1152, 20]
+    content:
+      fontSize: 10
+      color: $t3
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>P2P 当年对 CDN 做过的事，sLLM 对 Mooncake 再做一次 · 数据不出内网 · Swarm LLM 设计文档 v0.6</p>

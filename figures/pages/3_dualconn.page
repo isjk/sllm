@@ -1,0 +1,364 @@
+pageType: content
+background:
+  type: solid
+  color: "$bg"
+elements:
+  # ===== 头部 =====
+  - elementId: title
+    elementType: text
+    bounds: [64, 30, 800, 46]
+    content:
+      fontFamily: 得意黑
+      fontSize: 34
+      color: "$t1"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p>图 3 · 双连接分治</p>
+  - elementId: subtitle
+    elementType: text
+    bounds: [64, 80, 1080, 22]
+    content:
+      fontSize: 14
+      color: "$t2"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p>两类流量，两种心法——宪法第 4 条：拥塞窗口 per-connection，bulk 撑满窗口也拖不垮 token 流的 RTT</p>
+  - elementId: badge-box
+    elementType: shape
+    bounds: [1096, 36, 120, 30]
+    shapeName: roundRect
+    adjustments: [50000]
+    fill: {type: solid, color: "#0A1930"}
+    border: {style: solid, width: 1, color: "$amber"}
+  - elementId: badge-text
+    elementType: text
+    bounds: [1096, 36, 120, 30]
+    content:
+      fontSize: 12
+      color: "$amber"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>v0.6 架构基线</p>
+
+  # ===== 反例警示带 =====
+  - elementId: anti-band
+    elementType: shape
+    bounds: [64, 116, 1152, 52]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "#26151A"}
+    border: {style: solid, width: 1, color: "#8C4A52"}
+  - elementId: anti-icon
+    elementType: icon
+    bounds: [84, 130, 24, 24]
+    iconName: "fas:triangle-exclamation"
+    fill: {type: solid, color: "#E06C75"}
+  - elementId: anti-text
+    elementType: text
+    bounds: [122, 122, 1080, 40]
+    content:
+      fontSize: 12
+      color: "#E8B4B8"
+      align: [left, middle]
+      lineHeight: 1.5
+      text: |
+        <p><strong>反例 · 两类流量共用一条连接</strong>：QUIC 的 stream 之间无队头阻塞，但拥塞窗口是 per-connection 的——bulk 一挤满窗口，token 流的 RTT 跟着抖，直播心法被点播心法拖死。</p>
+
+  # ===== 节点 A =====
+  - elementId: nodeA
+    elementType: shape
+    bounds: [90, 210, 240, 270]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: nodeA-icon
+    elementType: icon
+    bounds: [108, 226, 26, 26]
+    iconName: "fas:server"
+    fill: {type: solid, color: "$cyan"}
+  - elementId: nodeA-title
+    elementType: text
+    bounds: [144, 222, 176, 34]
+    content:
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p><span style="font-size:13px; color:$t1"><strong>节点 A</strong></span><span style="font-size:10px; color:$t3">　Pool / Prefill 端</span></p>
+  - elementId: nodeA-body
+    elementType: text
+    bounds: [108, 264, 204, 130]
+    content:
+      fontSize: 10
+      color: "$t2"
+      lineHeight: 1.7
+      align: [left, top]
+      text: |
+        <p>· 引擎：llama.cpp（适配层）</p>
+        <p>· 角色：Prefill 产出 KV / 池供块</p>
+        <p>· 供给：bulk 发送端</p>
+  - elementId: nodeA-iface
+    elementType: shape
+    bounds: [106, 412, 208, 50]
+    shapeName: roundRect
+    adjustments: [14000]
+    fill: {type: solid, color: "#0E2342"}
+    border: {style: dash, width: 1, color: "$cyan"}
+  - elementId: nodeA-iface-t
+    elementType: text
+    bounds: [106, 412, 208, 50]
+    content:
+      fontSize: 10
+      color: "$cyan"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>ITransport 接口</strong></p>
+        <p><span style="font-size:9px; color:$t2">设计永不外包 · 实现可选型</span></p>
+
+  # ===== 节点 B =====
+  - elementId: nodeB
+    elementType: shape
+    bounds: [950, 210, 240, 270]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$chip"}
+    border: {style: solid, width: 2, color: "#67B8A6"}
+  - elementId: nodeB-icon
+    elementType: icon
+    bounds: [968, 226, 26, 26]
+    iconName: "fas:laptop"
+    fill: {type: solid, color: "#67B8A6"}
+  - elementId: nodeB-title
+    elementType: text
+    bounds: [1004, 222, 176, 34]
+    content:
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p><span style="font-size:13px; color:$t1"><strong>节点 B</strong></span><span style="font-size:10px; color:$t3">　Decode 端 · 贴用户</span></p>
+  - elementId: nodeB-body
+    elementType: text
+    bounds: [968, 264, 204, 130]
+    content:
+      fontSize: 10
+      color: "$t2"
+      lineHeight: 1.7
+      align: [left, top]
+      text: |
+        <p>· 引擎：llama.cpp（适配层）</p>
+        <p>· 角色：Decode 贴近用户</p>
+        <p>· 需求：stream 低时延接收</p>
+  - elementId: nodeB-iface
+    elementType: shape
+    bounds: [966, 412, 208, 50]
+    shapeName: roundRect
+    adjustments: [14000]
+    fill: {type: solid, color: "#0E2342"}
+    border: {style: dash, width: 1, color: "#67B8A6"}
+  - elementId: nodeB-iface-t
+    elementType: text
+    bounds: [966, 412, 208, 50]
+    content:
+      fontSize: 10
+      color: "#67B8A6"
+      align: [center, middle]
+      lineHeight: 1.4
+      text: |
+        <p><strong>ITransport 接口</strong></p>
+        <p><span style="font-size:9px; color:$t2">同一份接口 · 两种心法</span></p>
+
+  # ===== bulk 管道 =====
+  - elementId: bulk-pipe
+    elementType: shape
+    bounds: [340, 240, 600, 80]
+    shapeName: roundRect
+    adjustments: [6000]
+    fill: {type: solid, color: "#12365E"}
+    border: {style: solid, width: 2, color: "$cyan"}
+  - elementId: bulk-arrow
+    elementType: icon
+    bounds: [892, 266, 26, 26]
+    iconName: "fas:arrow-right"
+    fill: {type: solid, color: "$cyan"}
+  - elementId: bulk-text
+    elementType: text
+    bounds: [358, 246, 520, 68]
+    content:
+      align: [left, middle]
+      lineHeight: 1.5
+      text: |
+        <p><span style="font-size:13px; color:$cyan"><strong>连接 1 · bulk（点播心法）</strong></span><span style="font-size:10px; color:$t2">　KV 块 · 大块 · 可压缩 3~4×（P1）</span></p>
+        <p><span style="font-size:10px; color:$t2">CC：CUBIC（要极限吞吐上 BBRv3）· Jumbo Frame 9000 MTU · 低频 ACK 省反向流量</span></p>
+
+  # ===== stream 管道 =====
+  - elementId: stream-pipe
+    elementType: shape
+    bounds: [340, 396, 600, 56]
+    shapeName: roundRect
+    adjustments: [6000]
+    fill: {type: solid, color: "#143D38"}
+    border: {style: solid, width: 2, color: "#67B8A6"}
+  - elementId: stream-arrow
+    elementType: icon
+    bounds: [362, 412, 24, 24]
+    iconName: "fas:arrow-left"
+    fill: {type: solid, color: "#67B8A6"}
+  - elementId: stream-text
+    elementType: text
+    bounds: [398, 400, 520, 48]
+    content:
+      align: [left, middle]
+      lineHeight: 1.5
+      text: |
+        <p><span style="font-size:13px; color:#67B8A6"><strong>连接 2 · stream（直播心法）</strong></span><span style="font-size:10px; color:$t2">　token 流 · 小包高频 · 时延优先</span></p>
+        <p><span style="font-size:10px; color:$t2">CC：BBRv3 / Copa（不等丢包）· 高频 ACK 换快速反馈</span></p>
+
+  # ===== MyCC 钩子 =====
+  - elementId: mycc-chip
+    elementType: shape
+    bounds: [520, 332, 240, 52]
+    shapeName: roundRect
+    adjustments: [10000]
+    fill: {type: solid, color: "#2A2410"}
+    border: {style: solid, width: 2, color: "$amber"}
+  - elementId: mycc-text
+    elementType: text
+    bounds: [520, 332, 240, 52]
+    content:
+      align: [center, middle]
+      lineHeight: 1.35
+      text: |
+        <p><span style="font-size:12px; color:$amber"><strong>MyCC 成本钩子</strong></span></p>
+        <p><span style="font-size:9px; color:$t2">cost-aware 限速 × 叠加于两条连接的 pacing 输出</span></p>
+  - elementId: mycc-up
+    elementType: line
+    bounds: [560, 320, 4, 12]
+    viewBox: [4, 12]
+    points: "2,12 2,0"
+    arrow: [null, "arrow"]
+    border: {style: dash, width: 1, color: "$amber"}
+  - elementId: mycc-down
+    elementType: line
+    bounds: [712, 384, 4, 12]
+    viewBox: [4, 12]
+    points: "2,0 2,12"
+    arrow: [null, "arrow"]
+    border: {style: dash, width: 1, color: "$amber"}
+
+  # ===== 底部三张注解卡 =====
+  - elementId: c1
+    elementType: shape
+    bounds: [64, 520, 368, 132]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "#0E2342"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: c1-icon
+    elementType: icon
+    bounds: [84, 536, 20, 20]
+    iconName: "fas:rotate"
+    fill: {type: solid, color: "$cyan"}
+  - elementId: c1-title
+    elementType: text
+    bounds: [114, 534, 300, 22]
+    content:
+      fontSize: 12
+      color: "$cyan"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p><strong>churn 承接 · 各管各的</strong></p>
+  - elementId: c1-body
+    elementType: text
+    bounds: [84, 562, 330, 82]
+    content:
+      fontSize: 10
+      color: "$t2"
+      lineHeight: 1.55
+      align: [left, top]
+      text: |
+        <p>· <strong>0-RTT 重连</strong>：管"9 点开机 18 点关机"，首个飞行包即带数据</p>
+        <p>· <strong>连接迁移</strong>：管"机器没死、四元组变了"（DHCP 换 IP / 有线切 WiFi），Connection ID 会话不死</p>
+  - elementId: c2
+    elementType: shape
+    bounds: [456, 520, 368, 132]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "#0E2342"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: c2-icon
+    elementType: icon
+    bounds: [476, 536, 20, 20]
+    iconName: "fas:lock"
+    fill: {type: solid, color: "$amber"}
+  - elementId: c2-title
+    elementType: text
+    bounds: [506, 534, 300, 22]
+    content:
+      fontSize: 12
+      color: "$amber"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p><strong>0-RTT 安全边界</strong></p>
+  - elementId: c2-body
+    elementType: text
+    bounds: [476, 562, 330, 82]
+    content:
+      fontSize: 10
+      color: "$t2"
+      lineHeight: 1.55
+      align: [left, top]
+      text: |
+        <p>· 0-RTT 数据可被重放</p>
+        <p>· <strong>幂等的 KV 拉取：放心用</strong></p>
+        <p>· <strong>写入池操作：禁用 0-RTT</strong>——半信任环境的信任分级，落在这里</p>
+  - elementId: c3
+    elementType: shape
+    bounds: [848, 520, 368, 132]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "#0E2342"}
+    border: {style: solid, width: 1, color: "#2E5E9E"}
+  - elementId: c3-icon
+    elementType: icon
+    bounds: [868, 536, 20, 20]
+    iconName: "fas:signal"
+    fill: {type: solid, color: "$cyan2"}
+  - elementId: c3-title
+    elementType: text
+    bounds: [898, 534, 300, 22]
+    content:
+      fontSize: 12
+      color: "$cyan2"
+      wrap: false
+      align: [left, middle]
+      text: |
+        <p><strong>传输层 = 调度器的传感器</strong></p>
+  - elementId: c3-body
+    elementType: text
+    bounds: [868, 562, 330, 82]
+    content:
+      fontSize: 10
+      color: "$t2"
+      lineHeight: 1.55
+      align: [left, top]
+      text: |
+        <p>· RTT / cwnd 占用率 / 丢包，从 TQUIC 统计接口直读</p>
+        <p>· 直送"取 or 算"成本函数——传输层不只是管道，是神经末梢（MyCC 思想延伸）</p>
+
+  # ===== 页脚 =====
+  - elementId: footer
+    elementType: text
+    bounds: [64, 688, 1152, 20]
+    content:
+      fontSize: 10
+      color: "$t3"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>Prefill 是点播，Decode 是直播——两种心法，两条物理连接 · Swarm LLM 设计文档 v0.6</p>
